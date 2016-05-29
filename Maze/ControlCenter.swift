@@ -12,8 +12,6 @@ class ControlCenter {
     var mazeController: MazeController!
 
     func moveComplexRobot(myRobot: ComplexRobotObject) {
-      
-    // You may want to paste your Part 1 implementation of moveComplexRobot() here
         // Step 1.1c
         // Call the function, isFacingWall(), and define a constant to be equal to its return value.
         let robotIsBlocked = isFacingWall(myRobot, direction: myRobot.direction)
@@ -45,7 +43,7 @@ class ControlCenter {
         //}
         
         // Step 2.1c
-        // TODO: Save the return value of checkWalls() to a constant called myWallInfo.
+        // Save the return value of checkWalls() to a constant called myWallInfo.
         let myWallInfo = checkWalls(myRobot)
         
         // Step 2.2a
@@ -57,15 +55,15 @@ class ControlCenter {
         
         // Step 2.2b
         // Test whether the values of the above constants are correct
-        if isThreeWayJunction {
-            print("Three way Junction")
-        }
-        if isTwoWayPath {
-            print("Two Way Path")
-        }
-        if isDeadEnd {
-            print("Dead End")
-        }
+        //if isThreeWayJunction {
+        //    print("Three way Junction")
+        //}
+        //if isTwoWayPath {
+        //    print("Two Way Path")
+        //}
+        //if isDeadEnd {
+        //    print("Dead End")
+        //}
         // Step 2.3a
         // Three-way Path - else-if statements
         
@@ -76,7 +74,8 @@ class ControlCenter {
         
         // If the robot encounters a three way junction and there is NO wall ahead, it should continue straight or rotate (you need to write this else-if statement)
         if isThreeWayJunction && !robotIsBlocked {
-            continueStraightOrRotate(myRobot)
+            //continueStraightOrRotate(myRobot)
+            continueStraightOrRotate(myRobot, wallInfo: myWallInfo)
         }
         
         // Step 2.3b
@@ -88,8 +87,14 @@ class ControlCenter {
         }
         
         // If the robot encounters a two way path and there IS a wall ahead, it should randomly rotate.
+        //if isTwoWayPath && robotIsBlocked {
+        //    randomlyRotateRightOrLeft(myRobot)
+        //}
+        
+        // Step 3.2
+        // If the robot encounters a two way path and there IS a wall ahead, it should turn in the direction of the clear path.
         if isTwoWayPath && robotIsBlocked {
-            randomlyRotateRightOrLeft(myRobot)
+            turnTowardClearPath(myRobot, wallInfo: myWallInfo)
         }
         
         
@@ -110,4 +115,5 @@ class ControlCenter {
     func previousMoveIsFinished(robot: ComplexRobotObject) {
             self.moveComplexRobot(robot)
     }
+    
 }
