@@ -16,20 +16,28 @@ extension ControlCenter {
         var isWall: Bool = false
         
         // Step 1.1a
-        // TODO: Write a switch statement handling all possible values of direction. The first case has been done for you. Uncomment the code and add the remaining cases!
-        //        switch(direction) {
-        //        case .Up:
-        //            if cell.top {
-        //                isWall = true
-        //            }
-        //
-        //        }
+        // Switch statement handling all possible values of direction.
+        switch(direction) {
+        case .Up:
+            if cell.top {
+                isWall = true
+            }
+        case .Right:
+            if cell.right {
+                isWall = true
+            }
+        case .Down:
+            if cell.bottom {
+                isWall = true
+            }
+        case .Left:
+            if cell.left {
+                isWall = true
+            }
+        }
         
         // Step 1.1b
-        // TODO: Return a Bool that represents whether the robot is currently facing a wall. You will need to change the placeholder return statement below.
-        
-        
-        // Placeholder
-        return false
+        // Return a Bool that represents whether the robot is currently facing a wall.
+        return isWall;
     }
 }
